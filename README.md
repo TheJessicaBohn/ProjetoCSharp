@@ -1,5 +1,5 @@
 # ProjetoCSharp 
-![Badge](https://img.shields.io/badge/.NET-WebApi-%237159c1?style=for-the-badge&logo=c-sharp&logoColor=green)
+![Badge](https://img.shields.io/badge/.NET5-WebApi-%237159c1?style=for-the-badge&logo=c-sharp&logoColor=green)
 
 ## :scroll: Roadmap:
  * [Sobre](#sobre)
