@@ -25,3 +25,7 @@ Esse projeto é uma construção gradual de uma WebAPI em .Net5. 🚧  Ainda em 
 - **5 -** Para testar execute: ```dotnet run``` e clique em: http://localhost:5000 e coloque /WeatherForecast no navegador quando abrir a janela, e será retornado um json;
 - **6 -** Crie um novo Controller na pastas Controllers criada pelo comando ```dotnet new webapi```, como no exemplo [MovieControlle.cs](https://github.com/TheJessicaBohn/ProjetoCSharp/blob/main/Controllers/MovieController.cs);
 - dotnet add package Microsoft.EntityFrameworkCore.Sqlite instalar pacotes
+- dotnet add package Microsoft.EntityFrameworkCore.Design
+- dotnet tool install --global dotnet-ef
+- dotnet ef migrations add PrimeiraVersao
+- dotnet ef database update
