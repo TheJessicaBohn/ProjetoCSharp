@@ -32,6 +32,8 @@ namespace ProjetoCSharp
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ProjetoCSharp", Version = "v1" });
             });
+            
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Data Source=myapp.db"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
