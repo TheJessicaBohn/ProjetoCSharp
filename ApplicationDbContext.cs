@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-
+using ProjetoCSharp.Models;
 
 public class ApplicationDbContext : DbContext {
 

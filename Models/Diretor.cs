@@ -12,7 +12,7 @@ namespace ProjetoCSharp.Models
         public Diretor(string nome) 
         {
             this.Nome = nome;  
-            Filmes = new List<Filmes>();   
+            Filmes = new List<Filme>();   
         }
 
     }
