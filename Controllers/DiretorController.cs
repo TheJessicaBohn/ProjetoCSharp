@@ -29,11 +29,13 @@ public class DiretorController: ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<Diretor>> Post([FromBody] Diretor diretor) {
+    public async Task<ActionResult<DiretorInputDTO>> Post([FromBody] DiretorInputDTO diretorInputDTO) {
+        var diretor = new Diretor(diretorInputDTO.Nome);
         _context.Diretores.Add(diretor);
         await _context.SaveChangesAsync();
-
-        return Ok(diretor);
+    
+        var diretorOutputDTO = new DiretorOutputDTO(diretor.Id, diretor.Nome);
+        return Ok(diretorOutputDTO);
     }
 
     [HttpPut(("id"))]
