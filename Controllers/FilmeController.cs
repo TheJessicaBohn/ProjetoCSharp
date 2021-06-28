@@ -16,34 +16,47 @@ public class FilmeController: ControllerBase
     }
 
     [HttpGet]
-    public async Task<List<Filme>> Get()
+    public async Task<List<FilmeOutputGetAllDTO>> Get()
     {
-        return await _context.Filmes.ToListAsync();
+        var filmes = await _context.Filmes.ToListAsync();
+
+        var outputDTOList = new List<FilmeOutputGetAllDTO>();
+        foreach(Filme filme in filmes){
+            outputDTOList.Add(new FilmeOutputGetAllDTO(filme.Id, filme.Titulo));
+        }
+
+        return outputDTOList;
     } 
 
-    [HttpGet(("id"))]
-    public async Task<ActionResult<Filme>> GetById(long id)
+     [HttpGet(("id"))]
+    public async Task<ActionResult<FilmeOutputGetByIDDTO>> GetById(long id)
     {
          var filme = await _context.Filmes.FirstOrDefaultAsync(filme => filme.Id == id);
-         return Ok(filme);
+
+         var outputDTO = new FilmeOutputGetByIDDTO(filme.Id, filme.Titulo);
+         return Ok(outputDTO);
     }
 
     [HttpPost]
-    public async Task<ActionResult<Filme>> Post([FromBody] Filme Filme) {
-        _context.Filmes.Add(Filme);
+    public async Task<ActionResult<FilmeOutputPostDTO>> Post([FromBody] FilmeInputPostDTO filmeInputDTO) {
+        var filme = new Filme(filmeInputDTO.Titulo);
+        _context.Filmes.Add(filme);
         await _context.SaveChangesAsync();
-
-        return Ok(Filme);
+    
+        var filmeOutputDTO = new FilmeOutputPostDTO(filme.Id, filme.Titulo);
+        return Ok(filmeOutputDTO);
     }
 
     [HttpPut(("id"))]
-    public async Task<ActionResult<Filme>> Put(int id, [FromBody] Filme filme)
-    {
+    public async Task<ActionResult<FilmeOutputPutDTO>> Put(int id, [FromBody] FilmeInputPutDTO filmeInputPutDTO)
+    {   
+        var filme = new Filme(filmeInputPutDTO.Titulo);
         filme.Id = id;
         _context.Filmes.Update(filme);
         await _context.SaveChangesAsync();
 
-        return Ok(filme);
+         var filmeOutputDTO = new FilmeOutputPutDTO(filme.Id, filme.Titulo);
+         return Ok(filmeOutputDTO);
     }
 
 
