@@ -2,8 +2,9 @@ namespace ProjetoCSharp.Models
 {
     public class Filme
     { 
-        public Filme(string titulo){
+        public Filme(string titulo, long diretorId){
             Titulo = titulo;
+            DiretorId = diretorId;
         }
         public int Id {get; set;}
         public string Titulo { get; set;}

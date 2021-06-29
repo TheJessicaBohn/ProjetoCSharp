@@ -31,26 +31,32 @@ public class FilmeController: ControllerBase
      [HttpGet(("id"))]
     public async Task<ActionResult<FilmeOutputGetByIDDTO>> GetById(long id)
     {
-         var filme = await _context.Filmes.FirstOrDefaultAsync(filme => filme.Id == id);
+         var filme = await _context.Filmes.Include(filme => filme.Diretor).FirstOrDefaultAsync(filme => filme.Id == id);
 
-         var outputDTO = new FilmeOutputGetByIDDTO(filme.Id, filme.Titulo);
+         var outputDTO = new FilmeOutputGetByIDDTO(filme.Id, filme.Titulo, filme.Diretor.Nome);
          return Ok(outputDTO);
     }
 
     [HttpPost]
     public async Task<ActionResult<FilmeOutputPostDTO>> Post([FromBody] FilmeInputPostDTO filmeInputDTO) {
-        var filme = new Filme(filmeInputDTO.Titulo);
+        var diretor = await _context.Diretores.FirstOrDefaultAsync(diretor => diretor.Id == filmeInputDTO.DiretorId);
+        if (diretor == null){
+            return NotFound("Diretor informado não encontrado");
+        }
+
+        var filme = new Filme(filmeInputDTO.Titulo, diretor.Id);
         _context.Filmes.Add(filme);
         await _context.SaveChangesAsync();
     
-        var filmeOutputDTO = new FilmeOutputPostDTO(filme.Id, filme.Titulo);
+        var filmeOutputDTO = new FilmeOutputPostDTO(filme.Id,filme.Titulo);
         return Ok(filmeOutputDTO);
     }
 
     [HttpPut(("id"))]
     public async Task<ActionResult<FilmeOutputPutDTO>> Put(int id, [FromBody] FilmeInputPutDTO filmeInputPutDTO)
     {   
-        var filme = new Filme(filmeInputPutDTO.Titulo);
+        var filme = new Filme(filmeInputPutDTO.Titulo, filmeInputPutDTO.DiretorId);
+        
         filme.Id = id;
         _context.Filmes.Update(filme);
         await _context.SaveChangesAsync();
