@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ProjetoCSharp.Models;
-using System.Linq;
 
 [ApiController]
 [Route("[controller]")]
@@ -17,17 +16,13 @@ public class FilmeController: ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<FilmeOutputGetAllDTO>>> Get()
+    public async Task<List<FilmeOutputGetAllDTO>> Get()
     {
         var filmes = await _context.Filmes.ToListAsync();
 
         var outputDTOList = new List<FilmeOutputGetAllDTO>();
         foreach(Filme filme in filmes){
             outputDTOList.Add(new FilmeOutputGetAllDTO(filme.Id, filme.Titulo));
-        }
-
-         if(!outputDTOList.Any()){
-            return NotFound("Não Existem diretores cadastrados");
         }
 
         return outputDTOList;

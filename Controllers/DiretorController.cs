@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ProjetoCSharp.Models;
-using System.Linq;
 
 [ApiController]
 [Route("[controller]")]
@@ -16,9 +15,8 @@ public class DiretorController: ControllerBase
         _context = context;
     }
 
-    // Get api/diretore
     [HttpGet]
-    public async Task<ActionResult<List<DiretorOutputGetAllDTO>>> Get()
+    public async Task<List<DiretorOutputGetAllDTO>> Get()
     {
         var diretores = await _context.Diretores.ToListAsync();
 
@@ -27,9 +25,6 @@ public class DiretorController: ControllerBase
             outputDTOList.Add(new DiretorOutputGetAllDTO(diretor.Id, diretor.Nome));
         }
 
-        if(!outputDTOList.Any()){
-            return NotFound("Não Existem diretores cadastrados");
-        }
         return outputDTOList; 
     } 
 
