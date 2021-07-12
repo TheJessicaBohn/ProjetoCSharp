@@ -13,7 +13,5 @@ public class DiretorInputPostDTOValidator : AbstractValidator<DiretorInputPostDT
     public DiretorInputPostDTOValidator(){
         RuleFor(diretor => diretor.Nome).NotNull().NotEmpty();
         RuleFor(diretor => diretor.Nome).Length(2, 258).WithMessage("Tamanho {TotalLength} é invalido");
-        }
     }
-
 }
