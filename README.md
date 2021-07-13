@@ -29,3 +29,4 @@ Esse projeto é uma construção gradual de uma WebAPI em .Net5. 🚧  Ainda em 
 - dotnet tool install --global dotnet-ef
 - dotnet ef migrations add PrimeiraVersao
 - dotnet ef database update
+- `dotnet add package FluentValidation` e `dotnet add package FluentValidation.AspNetCore`
