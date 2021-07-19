@@ -9,12 +9,10 @@ using System.Linq;
 [Route("[controller]")]
 public class DiretorController: ControllerBase
 {
-    private readonly ApplicationDbContext _context;
     private readonly IDiretorService _diretorService;
     
-    public DiretorController(ApplicationDbContext context, IDiretorService diretorService) 
+    public DiretorController(IDiretorService diretorService) 
     {
-        _context = context;
         _diretorService = diretorService;
     }
 
