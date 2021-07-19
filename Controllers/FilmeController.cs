@@ -10,16 +10,18 @@ using System.Linq;
 public class FilmeController: ControllerBase
 {
     private readonly ApplicationDbContext _context;
+    private readonly IFilmeService _filmeService;
     
-    public FilmeController(ApplicationDbContext context) 
+    public FilmeController(ApplicationDbContext context, IFilmeService _filmeService) 
     {
+        _filmeService = filmeService;
         _context = context;
     }
 
     [HttpGet]
     public async Task<ActionResult<List<FilmeOutputGetAllDTO>>> Get()
     {
-        var filmes = await _context.Filmes.ToListAsync();
+        var filmes = await _filmeService.GetAll();
 
         var outputDTOList = new List<FilmeOutputGetAllDTO>();
         foreach(Filme filme in filmes){
@@ -36,7 +38,7 @@ public class FilmeController: ControllerBase
      [HttpGet(("id"))]
     public async Task<ActionResult<FilmeOutputGetByIDDTO>> GetById(long id)
     {
-         var filme = await _context.Filmes.Include(filme => filme.Diretor).FirstOrDefaultAsync(filme => filme.Id == id);
+         var filme = await _filmeService.GetById(id);
 
          var outputDTO = new FilmeOutputGetByIDDTO(filme.Id, filme.Titulo, filme.Diretor.Nome);
          return Ok(outputDTO);
@@ -44,14 +46,7 @@ public class FilmeController: ControllerBase
 
     [HttpPost]
     public async Task<ActionResult<FilmeOutputPostDTO>> Post([FromBody] FilmeInputPostDTO filmeInputDTO) {
-        var diretor = await _context.Diretores.FirstOrDefaultAsync(diretor => diretor.Id == filmeInputDTO.DiretorId);
-        if (diretor == null){
-            return NotFound("Diretor informado não encontrado");
-        }
-
-        var filme = new Filme(filmeInputDTO.Titulo, diretor.Id);
-        _context.Filmes.Add(filme);
-        await _context.SaveChangesAsync();
+        var filme = await _filmeService.Post(filmeInputDTO);
     
         var filmeOutputDTO = new FilmeOutputPostDTO(filme.Id,filme.Titulo);
         return Ok(filmeOutputDTO);
@@ -60,23 +55,16 @@ public class FilmeController: ControllerBase
     [HttpPut(("id"))]
     public async Task<ActionResult<FilmeOutputPutDTO>> Put(int id, [FromBody] FilmeInputPutDTO filmeInputPutDTO)
     {   
-        var filme = new Filme(filmeInputPutDTO.Titulo, filmeInputPutDTO.DiretorId);
-        
-        filme.Id = id;
-        _context.Filmes.Update(filme);
-        await _context.SaveChangesAsync();
-
-         var filmeOutputDTO = new FilmeOutputPutDTO(filme.Id, filme.Titulo);
-         return Ok(filmeOutputDTO);
+        var filme = await _filmeService.Put(id, filmeInputPutDTO);
+        var filmeOutputDTO = new FilmeOutputPutDTO(filme.Id, filme.Titulo);
+        return Ok(filmeOutputDTO);
     }
 
 
     [HttpDelete(("id"))]
     public async Task<ActionResult> Delete(long id)
     {
-      var filme = await _context.Filmes.FirstOrDefaultAsync(filme => filme.Id == id);
-      _context.Remove(filme);
-      await _context.SaveChangesAsync();
+      var filme = await _filmeService.Delete(id);
 
       return Ok(filme);
     }
