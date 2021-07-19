@@ -10,17 +10,19 @@ using System.Linq;
 public class DiretorController: ControllerBase
 {
     private readonly ApplicationDbContext _context;
+    private readonly IDiretorService _diretorService;
     
-    public DiretorController(ApplicationDbContext context) 
+    public DiretorController(ApplicationDbContext context, IDiretorService diretorService) 
     {
         _context = context;
+        _diretorService = diretorService;
     }
 
     // Get api/diretore
     [HttpGet]
     public async Task<ActionResult<List<DiretorOutputGetAllDTO>>> Get()
     {
-        var diretores = await _context.Diretores.ToListAsync();
+        var diretores = await _diretorService.GetAll();
 
         var outputDTOList = new List<DiretorOutputGetAllDTO>();
         foreach(Diretor diretor in diretores){
@@ -37,7 +39,7 @@ public class DiretorController: ControllerBase
     [HttpGet(("id"))]
     public async Task<ActionResult<DiretorOutputGetByIDDTO>> GetById(long id)
     {
-         var diretor = await _context.Diretores.FirstOrDefaultAsync(diretor => diretor.Id == id);
+         var diretor = await  _diretorService.GetById(id);
 
          var outputDTO = new DiretorOutputGetByIDDTO(diretor.Id, diretor.Nome);
          return Ok(outputDTO);
@@ -49,9 +51,7 @@ public class DiretorController: ControllerBase
     /// <response code="400">Erro de validação</response>
     [HttpPost]
     public async Task<ActionResult<DiretorOutputPostDTO>> Post([FromBody] DiretorInputPostDTO diretorInputDTO) {
-        var diretor = new Diretor(diretorInputDTO.Nome);
-        _context.Diretores.Add(diretor);
-        await _context.SaveChangesAsync();
+        var diretor = await _diretorService.Post(diretorInputDTO);
     
         var diretorOutputDTO = new DiretorOutputPostDTO(diretor.Id, diretor.Nome);
         return Ok(diretorOutputDTO);
@@ -77,10 +77,7 @@ public class DiretorController: ControllerBase
     [HttpPut(("id"))]
     public async Task<ActionResult<DiretorOutputPutDTO>> Put(long id, [FromBody] DiretorInputPutDTO diretorInputPutDTO)
     {   
-        var diretor = new Diretor(diretorInputPutDTO.Nome);
-        diretor.Id = id;
-        _context.Diretores.Update(diretor);
-        await _context.SaveChangesAsync();
+        var diretor = await _diretorService.Put(id, diretorInputPutDTO);
 
          var diretorOutputDTO = new DiretorOutputPutDTO(diretor.Id, diretor.Nome);
          return Ok(diretorOutputDTO);
@@ -90,9 +87,7 @@ public class DiretorController: ControllerBase
     [HttpDelete(("id"))]
     public async Task<ActionResult> Delete(long id)
     {
-      var diretor = await _context.Diretores.FirstOrDefaultAsync(diretor => diretor.Id == id);
-      _context.Remove(diretor);
-      await _context.SaveChangesAsync();
+      var diretor = await _diretorService.Delete(id);
 
       return Ok(diretor);
     }
