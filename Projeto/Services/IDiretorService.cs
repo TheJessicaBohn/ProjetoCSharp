@@ -7,5 +7,5 @@ public interface IDiretorService {
     Task<Diretor> GetById(long id);
     Task<Diretor> Post(DiretorInputPostDTO diretorInputDTO);
     Task<Diretor> Put(long id, DiretorInputPutDTO diretorInputPutDTO);
-    Task<Diretor> Delete(long id)
+    Task<Diretor> Delete(long id);
 }
