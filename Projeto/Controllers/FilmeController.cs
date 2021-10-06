@@ -12,7 +12,7 @@ public class FilmeController: ControllerBase
     private readonly ApplicationDbContext _context;
     private readonly IFilmeService _filmeService;
     
-    public FilmeController(ApplicationDbContext context, IFilmeService _filmeService) 
+    public FilmeController(ApplicationDbContext context, IFilmeService filmeService) 
     {
         _filmeService = filmeService;
         _context = context;

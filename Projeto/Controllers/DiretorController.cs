@@ -16,7 +16,7 @@ public class DiretorController: ControllerBase
         _diretorService = diretorService;
     }
 
-    // Get api/diretore
+    // Get api/diretores
     [HttpGet]
     public async Task<ActionResult<List<DiretorOutputGetAllDTO>>> Get()
     {
