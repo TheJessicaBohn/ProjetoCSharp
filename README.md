@@ -30,10 +30,9 @@
 
 - **1 -** Mesmo passo a passo do **HelloWorld** até o passo **5**, podendo pular os passos caso o projeto seja criado no mesmo repositório;
 - **2 -** Execute o comando: ```dotnet new webapi```;
-- **3 -** 41 min aula 15
-- **4 -** 
+- **3 -** Para testar execute: ```dotnet run``` e clique em: http://localhost:5001 e coloque /WeatherForecast no navegador quando abrir a janela, e será retornado um json;
+- **4 -** Mas para facilitar pode colocar o seguinte entredereço http://localhost:5001/swagger/idex.html
 - **5 -** 
--  Para testar execute: ```dotnet run``` e clique em: http://localhost:5000 e coloque /WeatherForecast no navegador quando abrir a janela, e será retornado um json;
 - **6 -** Crie um novo Controller na pastas Controllers criada pelo comando ```dotnet new webapi```, como no exemplo [MovieControlle.cs](https://github.com/TheJessicaBohn/ProjetoCSharp/blob/main/Controllers/MovieController.cs);
 - dotnet add package Microsoft.EntityFrameworkCore.Sqlite instalar pacotes
 - dotnet add package Microsoft.EntityFrameworkCore.Design
