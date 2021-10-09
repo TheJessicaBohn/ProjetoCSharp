@@ -14,25 +14,26 @@
 ### :wrench: Ferramntas Utilizadas 
 * [.NET5](https://dotnet.microsoft.com/download/dotnet/5.0); 
 * Editor de texto [VSCode](https://code.visualstudio.com/Download);
-* [Git](https://code.visualstudio.com/Download);
+* [Git](https://code.visualstudio.com/Download), deve ser colocada na variavel Path;
 * [GitHub Desktop](https://desktop.github.com/).
 
 ### :heavy_check_mark: To Do List (HelloWorld)
-- **1 -** Crie um repositório no GitHub;
-- **2 -** Clone o projeto para a sua maquina e abra no VSCode;
-- **3 -** Crie um .gitignore, pode ser o [exemplo](https://github.com/TheJessicaBohn/ProjetoCSharp/blob/main/.gitignore) deste repositório; 
-- **4 -** Execute o comando ```dotnet --version``` para podermos ver a versão instalado do .Net;
-- **5 -** Crie uma pasta com o nome do projeto e entre na mesma pelo comando ```cd nomeDaPasta``` ;
-- **6 -** Execute o comando: ```dotnet new console```;
-- **7 -** Para executar o projeto execute o comando ```dotnet run```;
+- **1 -** Instale as [Ferramentas Utilizadas](#ferramntas-utilizadas) 
+- **2 -** Crie um repositório no GitHub;
+- **3 -** Clone (se preferir pode ser pelo GitHub Desktop) o projeto para a sua maquina e abra no VSCode;
+- **4 -** Crie um .gitignore, pode ser o [exemplo](https://github.com/TheJessicaBohn/ProjetoCSharp/blob/main/.gitignore) deste repositório; 
+- **5 -** Execute o comando ```dotnet --version``` para podermos ver a versão instalado do .Net;
+- **6 -** Crie uma pasta com o nome do projeto e entre na mesma pelo comando ```cd nomeDaPasta``` ;
+- **7 -** Execute o comando: ```dotnet new console```;
+- **8 -** Para executar o projeto execute o comando ```dotnet run```;
 
 ### :heavy_check_mark: To Do List (WebAPI)
 
-- **1 -** Mesmo passo a passo do **HelloWorld** até o passo **5**, podendo pular os passos caso o projeto seja criado no mesmo repositório;
+- **1 -** Mesmo passo a passo do **HelloWorld** até o passo **6**, podendo pular os passos caso o projeto seja criado no mesmo repositório;
 - **2 -** Execute o comando: ```dotnet new webapi```;
-- **3 -** Para testar execute: ```dotnet run``` e clique em: http://localhost:5001 e coloque /WeatherForecast no navegador quando abrir a janela, e será retornado um json;
+- **3 -** Para testar execute: ```dotnet run``` e Ctrl+clique em: http://localhost:5001 e coloque /WeatherForecast no navegador quando abrir a janela, e será retornado um json;
 - **4 -** Mas para facilitar pode colocar o seguinte entredereço http://localhost:5001/swagger/idex.html
-- **5 -** 
+- **5 -** 46:09 aula16
 - **6 -** Crie um novo Controller na pastas Controllers criada pelo comando ```dotnet new webapi```, como no exemplo [MovieControlle.cs](https://github.com/TheJessicaBohn/ProjetoCSharp/blob/main/Controllers/MovieController.cs);
 - dotnet add package Microsoft.EntityFrameworkCore.Sqlite instalar pacotes
 - dotnet add package Microsoft.EntityFrameworkCore.Design
@@ -43,7 +44,13 @@
 
 ### :watch: Outros Comandos:
 - ```dotnet new``` serve como um helper com vários templates para completar o comando e iniciar o projeto;
+- No terminal digite ```code.``` e ele vai abrir o VSCode
 
 ### :bulb: Dicas:
 - Todos os anos saí uma nova versão de .Net, se não quer perder as atualizações leia a [documentação](https://docs.microsoft.com/pt-br/dotnet/); 
 - VSCode, funciona como uma pagina web então pode-se utilizar os mesmos comandos de um navegador dentro do editor;
+- Um bom programador é um bom googador ["Andre N. Darcie"](https://github.com/andredarcie);
+- Tente seguir projetos do GitHub parecidos com a sua ideia para você aprender;
+- Pesquise em inglês;
+- O .gitignore do C# ou DotNet é o template do VisualStudio, na hora de adicionar um a um projeto novo ao repositório do GitHub; 
+- A Cada modificação do seu projeto é interssante commitar com um titulo no seu GitHub para que, você possa acompanhar o histórico da evolução com mais clareza; 
