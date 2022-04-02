@@ -17,7 +17,7 @@
 * [Git](https://code.visualstudio.com/Download), deve ser colocada na variavel Path;
 * [GitHub Desktop](https://desktop.github.com/).
 
-### :heavy_check_mark: To Do List [(HelloWorld)](https://github.com/TheJessicaBohn/ProjetoCSharp/edit/main/README.md)
+### :heavy_check_mark: To Do List [(HelloWorld)](https://github.com/TheJessicaBohn/ProjetoCSharp/tree/main/HelloWorld)
 - **1 -** Instale as [Ferramentas Utilizadas](#ferramntas-utilizadas) 
 - **2 -** Crie um repositório no GitHub;
 - **3 -** Clone (se preferir pode ser pelo GitHub Desktop) o projeto para a sua maquina e abra no VSCode;
@@ -26,6 +26,9 @@
 - **6 -** Crie uma pasta com o nome do projeto e entre na mesma pelo comando ```cd nomeDaPasta``` ;
 - **7 -** Execute o comando: ```dotnet new console```;
 - **8 -** Para executar o projeto execute o comando ```dotnet run```;
+- **9 -** Retorno:
+![image](https://user-images.githubusercontent.com/47541659/161384203-93de2c7b-c940-4e7e-9fa3-a2656a5d4acd.png)
+
 
 ### :heavy_check_mark: To Do List [(WebAPI)](https://github.com/TheJessicaBohn/ProjetoCSharp/tree/main/Projeto)
 
