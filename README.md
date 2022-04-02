@@ -36,8 +36,8 @@
 - **2 -** Execute o comando: ```dotnet new webapi```;
 - **3 -** Para testar execute: ```dotnet run``` e Ctrl+clique em: http://localhost:5001 e coloque /WeatherForecast no navegador quando abrir a janela, e será retornado um json;
 - **4 -** Mas para facilitar pode colocar o seguinte entredereço http://localhost:5001/swagger/idex.html
-- **5 -** aula16 56:47
-- **6 -** Crie um novo Controller na pastas Controllers criada pelo comando ```dotnet new webapi```, como no exemplo [MovieControlle.cs](https://github.com/TheJessicaBohn/ProjetoCSharp/blob/main/Controllers/MovieController.cs);
+- **5 -**  Crie um novo Controller na pastas Controllers criada pelo comando ```dotnet new webapi```, como no exemplo [FilmeController.cs](https://github.com/TheJessicaBohn/ProjetoCSharp/blob/main/Projeto/Controllers/FilmeController.cs);
+- **6 -** Lembrando que é importante subir as suas alterações para o GitHub, através dos commits pelo Git ou GitHub Desktop.
 - dotnet add package Microsoft.EntityFrameworkCore.Sqlite instalar pacotes
 - dotnet add package Microsoft.EntityFrameworkCore.Design
 - dotnet tool install --global dotnet-ef
