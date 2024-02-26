@@ -49,6 +49,9 @@
 - ```dotnet new``` serve como um helper com vários templates para completar o comando e iniciar o projeto;
 - No terminal digite ```code.``` e ele vai abrir o VSCode;
 - Comentários: /* comenta multiplas linhas */, // comenta uma linha;
+
+### :book: Dicionário:
+- Namespace: É uma forma de delimitação para organização o escopo, como um contêiner que armazena nomes e evita conflitos entre classes que podem ter mesmo nome, porém em regioes diferetes;
 - Variáveis:
   - bool myBool = true; //true or false; 
   - byte myByte = 255; //0 to 255;
